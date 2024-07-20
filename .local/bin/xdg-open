@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -n "$1" ]; then
+	type=$(file --mime-type -Lb "$1")
+	case "$type" in
+		video/*) mpv "$1" ;;
+		audio/*) mpv "$1" ;;
+		image/*) imv "$1" ;;
+		text/*) alacritty -e "$EDITOR" "$1" ;;
+	esac
+fi

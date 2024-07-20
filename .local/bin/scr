@@ -1,0 +1,12 @@
+#!/bin/yash
+
+shotpath="$HOME/pictures/screenshots"
+filename="${shotpath}/screenshot-$(date +'%Y-%m-%d-%H%M%S.png')"
+
+if [ -n "$1" ]; then
+	case "$1" in
+		file_full) grim "$filename" ;;
+		file_snip) slurp | grim -g - "$filename" ;;
+		clip_snip) slurp | grim -g - - | wl-copy ;;
+	esac
+fi

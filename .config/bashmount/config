@@ -1,0 +1,5 @@
+pretty='1'
+
+filemanager() {
+   detach /usr/bin/alacritty --class file_manager -e lf $1
+}

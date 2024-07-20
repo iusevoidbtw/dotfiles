@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FreeTube
+Exec=env $HOME/containers/freetube/launch.sh %U
+Terminal=false
+Type=Application
+StartupWMClass=FreeTube
+Comment=A private YouTube client
+MimeType=x-scheme-handler/freetube;
+Categories=Network;

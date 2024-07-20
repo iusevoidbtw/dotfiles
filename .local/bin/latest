@@ -1,0 +1,28 @@
+#!/bin/yash
+
+if [ -n "$1" ]; then
+	if [ "$1" == "linux" ]; then
+		printf "The latest release is... "
+		curl -s https://kernel.org | grep -A 1 "latest_link" | grep -v td | sed 's/<a href=".*">//g' | sed 's/<\/a>//g' | awk '{print $1}'
+	elif [ "$1" == "openbsd" ]; then
+		printf "The latest release is... "
+		curl -s https://www.openbsd.org | grep -A 1 "The current release is" | grep -o "OpenBSD *.*" | sed "s/<\/a>//g"
+	elif [ -n "$2" ] && [ "$1" == "github" ]; then
+		printf "The latest release is... "
+		case "$2" in
+			*/*) tmp=$(curl -s "https://api.github.com/repos/$2/releases/latest")
+				if [ ! "$?" -eq 0 ]; then
+					printf "(error) curl failed\n"
+					exit 1
+				fi
+				echo "$tmp" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+				;;
+		esac
+	else
+		printf "usage: latest [linux] [openbsd] [github owner/repo]\n"
+		exit 1
+	fi
+else
+	printf "usage: latest [linux] [openbsd] [github owner/repo]\n"
+	exit 1
+fi
