@@ -1,0 +1,5 @@
+alias c='clear'
+alias dot='git --git-dir=$HOME/.dot/ --work-tree=$HOME'
+alias qfind='find . -name '
+alias trim='doas fstrim --listed-in /etc/fstab:/proc/self/mountinfo --verbose --quiet-unsupported'
+alias valleakchk='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
