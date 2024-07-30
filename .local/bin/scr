@@ -1,4 +1,4 @@
-#!/bin/yash
+#!/usr/bin/env bash
 
 shotpath="$HOME/pictures/screenshots"
 filename="${shotpath}/screenshot-$(date +'%Y-%m-%d-%H%M%S.png')"

@@ -1,4 +1,4 @@
-#!/bin/yash
+#!/usr/bin/env bash
 
 if [ -n "$1" ]; then
 	if [ "$1" == "linux" ]; then
