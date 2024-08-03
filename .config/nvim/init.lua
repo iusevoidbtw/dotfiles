@@ -5,7 +5,7 @@ vim.call('plug#begin')
 
 Plug('catppuccin/nvim', { ['as'] = 'catppuccin' })
 
-vim.g.coq_settings = { auto_start = 'shut-up' }
+vim.g.coq_settings = { auto_start = 'shut-up', ['keymap.eval_snips'] = '<leader>j' }
 Plug('ms-jpq/coq_nvim', { ['branch'] = 'coq' })
 Plug('ms-jpq/coq.artifacts', { ['branch'] = 'artifacts' })
 
@@ -20,6 +20,8 @@ vim.g.chadtree_settings = {
 	}
 }
 Plug('ms-jpq/chadtree', { ['branch'] = 'chad', ['do'] = 'python3 -m chadtree deps'})
+
+Plug('tpope/vim-fugitive')
 
 vim.call('plug#end')
 
