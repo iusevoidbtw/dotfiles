@@ -50,7 +50,7 @@ cp -vr "/etc/xbps.d" ./
 # --- GRUB ---
 echo "copying grub config"
 mkdir -v "default"
-cp -v "/etc/default/grub" "default/"
+cp -v "/etc/default/grub" default/
 
 # --- RC.LOCAL ---
 echo "copying rc.local"
@@ -71,7 +71,12 @@ cp -vr "/etc/iwd" ./
 # --- UDEV RULES ---
 echo "copying udev rules"
 mkdir -v "udev"
-cp -vr "/etc/udev/rules.d" ./udev/
+cp -vr "/etc/udev/rules.d" udev/
+
+# --- ZRAM CONFIG ---
+echo "copying zram config"
+mkdir -vp "sv/zramen"
+cp -v "/etc/sv/zramen/conf" sv/zramen/
 
 # END OF ETC DIR
 # --------------------------------------
