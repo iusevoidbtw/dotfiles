@@ -1,5 +1,5 @@
 # set PATH
-export PATH="$PATH:$HOME/.local/bin:/opt/diet/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # set nvim as the default editor
 export EDITOR=nvim
