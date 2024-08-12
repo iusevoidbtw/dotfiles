@@ -2,7 +2,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     color: @lavender;
-    font-family: "JetBrains Mono NL", Helvetica, Arial, sans-serif;
+    font-family: "JetBrainsMonoNL Nerd Font", Helvetica, Arial, sans-serif;
     font-size: 17px;
     border-radius: 30px;
     margin: 2px;

@@ -24,7 +24,7 @@ seat * xcursor_theme $cursor $cursor_size
 
 gaps inner 12
 default_border pixel 4
-font pango:JetBrainsMonoNL Bold 10
+font pango:JetBrainsMonoNL Nerd Font Bold 10
 client.focused $lavender $lavender $base $text
 
 input type:touchpad {
