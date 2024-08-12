@@ -1,6 +1,5 @@
 @import "mocha.css";
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     color: @lavender;
     font-family: "JetBrainsMonoNL Nerd Font", Helvetica, Arial, sans-serif;
     font-size: 17px;
