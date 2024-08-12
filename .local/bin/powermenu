@@ -10,5 +10,5 @@ EOF
 case "$choice" in
 	'poweroff') poweroff ;;
 	'reboot') reboot ;;
-	'exit sway') killall pipewire; swaymsg exit ;;
+	'exit sway') swaymsg exit ;;
 esac
