@@ -1,5 +1,7 @@
 # my dotfiles
 
+![screenshot](screenshot.png)
+
 sway + waybar + alacritty + zsh
 
 NOTE: this repo was initially made as just a way for me to easily replicate my setup somewhere else, there might be stuff that's not relevant for your system and stuff
@@ -16,7 +18,9 @@ sh install.sh
 
 the same as above, as a one-liner:
 
-`sh -c "$(curl -fsSL https://raw.githubusercontent.com/iusevoidbtw/dotfiles/master/install.sh)"`
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/iusevoidbtw/dotfiles/master/install.sh)"
+```
 
 alternatively, you can clone the repo and install the files manually. in this case, make sure you have the following installed:
 
