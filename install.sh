@@ -129,7 +129,7 @@ if [ $somemissing -eq 1 ]; then
 		missing=""
 		echo "it looks like you're using Arch (or another pacman-based distro)."
 		echo "you'll need to install these packages:"
-		for pkg in sway swaybg alacritty zsh waybar lf slurp grim wl-clipboard fzf ttf-jetbrains-mono-nerd bat neovim; do
+		for pkg in sway swaybg alacritty zsh waybar lf slurp grim wl-clipboard fzf zoxide ttf-jetbrains-mono-nerd bat neovim; do
 			if ! pacman -Qi "$pkg" > /dev/null 2>&1; then
 				missing="$missing $pkg"
 			fi
@@ -148,7 +148,7 @@ if [ $somemissing -eq 1 ]; then
 		missing=""
 		echo "it looks like you're using Void."
 		echo "you'll need to install these packages:"
-		for pkg in sway swaybg alacritty zsh Waybar lf slurp grim wl-clipboard fzf bat neovim; do
+		for pkg in sway swaybg alacritty zsh Waybar lf slurp grim wl-clipboard fzf zoxide bat neovim; do
 			if ! xbps-query -i "$pkg" > /dev/null 2>&1; then
 				missing="$missing $pkg"
 			fi
