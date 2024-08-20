@@ -38,10 +38,10 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- quick keybinds
-map('n', '<leader>s', ':w<cr>') -- save
-map('n', '<leader>q', ':qa!<cr>') -- quit
-map('n', '<leader>t', ':CHADopen<cr>') -- open chadtree
-map('n', '<leader>y', ':abo vnew term://zsh<cr>') -- open zsh
-map('n', '<leader>c', ':nohl<cr>') -- clear search highlighting
-map('n', '<leader>n', '<esc>A;<esc>') -- add semicolon to end of line
-map('n', '<leader>e', ':%s/    /	/g<cr>') -- replace 4 spaces with tabs
+map('n', '<leader>s', ':w<cr>')                    -- save
+map('n', '<leader>q', ':qa!<cr>')                  -- quit
+map('n', '<leader>w', ':confirm xall<cr>')         -- save & quit
+map('n', '<leader>e', ':CHADopen<cr>')             -- open chadtree
+map('n', '<leader>r', ':below new term://zsh<cr>') -- open zsh
+map('n', '<leader>c', ':nohl<cr>')                 -- clear search highlighting
+map('t', '<leader><esc>', '<c-\\><c-n>')           -- switch terminal to normal mode

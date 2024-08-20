@@ -9,7 +9,6 @@ set $term alacritty
 
 # applications
 set $menu $term --class floatmenu -e sway-launcher-desktop
-set $powermenu $term --class floatmenu -e powermenu
 set $file_manager $term -e lf
 set $browser firefox
 
@@ -44,9 +43,9 @@ bindsym $mod+o exec $menu
 bindsym $mod+p exec $file_manager
 bindsym $mod+i exec $browser
 bindsym $mod+u exec $term --class largefloatmenu -e bashmount
-bindsym $mod+y exec $term --class largefloatmenu -e bluetuith
-bindsym $mod+t exec $powermenu
-bindsym $mod+Shift+y exec killall freetube
+bindsym $mod+y exec $term --class largefloatmenu -e iwtui
+bindsym $mod+Shift+y exec $term --class largefloatmenu -e bluetuith
+bindsym $mod+t exec $term --class floatmenu -e powermenu
 
 # program action keybinds
 bindsym $mod+x exec scr file_full
@@ -54,6 +53,7 @@ bindsym $mod+Shift+x exec scr file_snip
 bindsym $mod+Shift+s exec scr clip_snip
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
@@ -63,7 +63,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag \
 	-t warning \
 	-m 'what do you want to do?' \
-	-B 'exit sway' '$exitcmd' \
+	-B 'exit sway' 'swaymsg exit' \
 	-B 'reboot' 'reboot' \
 	-B 'poweroff' 'poweroff'
 bindsym $mod+$left focus left
