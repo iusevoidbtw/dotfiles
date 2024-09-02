@@ -17,6 +17,9 @@ output "*" bg ~/.local/share/wallpapers/ma_cat_line_lavender.png fill
 for_window [app_id="floatmenu"] floating enable, sticky enable, resize set 45 ppt 60 ppt, border pixel 10
 for_window [app_id="largefloatmenu"] floating enable, sticky enable, resize set 62 ppt 90 ppt, border pixel 10
 
+# background stuff
+exec pipewire
+
 set $cursor Catppuccin-Mocha-Lavender-Cursors
 set $cursor_size 24
 seat * xcursor_theme $cursor $cursor_size
@@ -43,7 +46,7 @@ bindsym $mod+o exec $menu
 bindsym $mod+p exec $file_manager
 bindsym $mod+i exec $browser
 bindsym $mod+u exec $term --class largefloatmenu -e bashmount
-bindsym $mod+y exec $term --class largefloatmenu -e iwtui
+bindsym $mod+y exec $term --class largefloatmenu -e impala
 bindsym $mod+Shift+y exec $term --class largefloatmenu -e bluetuith
 bindsym $mod+t exec $term --class floatmenu -e powermenu
 
