@@ -179,6 +179,9 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 		copy_with_confirmation dotfiles/.config/$confdir ~/.config/$confdir
 	done
 
+	# rebuild bat cache
+	bat cache --build
+
 	# copy over stuff from .local/bin
 	maybe_mkdir ~/.local/bin
 
