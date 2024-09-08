@@ -161,15 +161,64 @@ fi
 printf "begin the installation? [y/N] "
 read answer
 if [ "$answer" != "${answer#[Yy]}" ]; then
-	if ! which git > /dev/null 2>&1; then
-		echo "it looks like you don't have git installed, which is needed to clone the dotfiles repo." >&2
-		exit 1
+	if [ -d dotfiles ]; then
+		echo "you already have a directory named 'dotfiles' in here."
+		printf "continue with installation anyways? [y/N] "
+		read answer
+		if [ "$answer" = "${answer#[Yy]}" ]; then
+			echo "exiting."
+			exit
+		fi
+	else
+		if ! which git > /dev/null 2>&1; then
+			echo "it looks like you don't have git installed, which is needed to clone the dotfiles repo." >&2
+			exit 1
+		fi
+
+		# clone the repo
+		if ! git clone --depth=1 https://github.com/iusevoidbtw/dotfiles.git; then
+			echo "cloning git repo failed -- exiting" >&2
+			exit 1
+		fi
 	fi
 
-	# clone the repo
-	if ! git clone --depth=1 https://github.com/iusevoidbtw/dotfiles.git; then
-		echo "cloning git repo failed -- exiting" >&2
-		exit 1
+	echo "would you like to install the cursor theme?"
+	printf "(this will overwrite ~/.local/share/icons/default) [y/N] "
+	read answer
+	if [ "$answer" != "${answer#[Yy]}" ]; then
+		# install cursor theme
+		maybe_mkdir ~/.local/share/icons
+		if [ ! -d ~/.local/share/icons/catppuccin-mocha-lavender-cursors ]; then
+			if ! which curl > /dev/null 2>&1; then
+				echo "it looks like you don't have curl installed, which is needed to install the cursor theme." >&2
+				exit 1
+			fi
+			if ! which unzip > /dev/null 2>&1; then
+				echo "it looks like you don't have unzip installed, which is needed to install the cursor theme." >&2
+				exit 1
+			fi
+			curl -fLO https://github.com/catppuccin/cursors/releases/download/v0.3.1/catppuccin-mocha-lavender-cursors.zip
+			unzip catppuccin-mocha-lavender-cursors.zip
+			cp -r catppuccin-mocha-lavender-cursors ~/.local/share/icons/
+			rm -r catppuccin-mocha-lavender-cursors.zip catppuccin-mocha-lavender-cursors
+		fi
+		sed -i '/gtk-cursor-theme-name=".*"/d' ~/.gtkrc-2.0 2>/dev/null
+		echo 'gtk-cursor-theme-name="catppuccin-mocha-lavender-cursors"' >> ~/.gtkrc-2.0
+		if [ -f ~/.config/gtk-3.0/settings.ini ]; then
+			grep -qxF '[Settings]' ~/.config/gtk-3.0/settings.ini || echo '[Settings]' >> ~/.config/gtk-3.0/settings.ini
+			sed -i '/gtk-cursor-theme-name=.*/d' ~/.config/gtk-3.0/settings.ini
+			sed -i '/[Settings]/a gtk-cursor-theme-name=catppuccin-mocha-lavender-cursors' ~/.config/gtk-3.0/settings.ini
+		else
+			maybe_mkdir ~/.config/gtk-3.0
+			echo '[Settings]' > ~/.config/gtk-3.0/settings.ini
+			echo 'gtk-cursor-theme-name=catppuccin-mocha-lavender-cursors' >> ~/.config/gtk-3.0/settings.ini
+		fi
+		if [ -e ~/.local/share/icons/default ]; then
+			rm -rf ~/.local/share/icons/default
+		fi
+		mkdir ~/.local/share/icons/default
+		echo '[Icon Theme]' > ~/.local/share/icons/default/index.theme
+		echo 'Inherits=catppuccin-mocha-lavender-cursors' > ~/.local/share/icons/default/index.theme
 	fi
 
 	# copy over stuff from .config
